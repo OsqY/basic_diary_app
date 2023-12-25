@@ -43,6 +43,9 @@ func serveApplication() {
 	protectedRoutes.Use(middleware.JWTAuthMiddleware())
 	protectedRoutes.POST("/entry", controllers.AddEntry)
 	protectedRoutes.GET("/entry", controllers.GetAllEntries)
+	protectedRoutes.GET("/entry/:id", controllers.GetEntryById)
+	protectedRoutes.PUT("/entry/:id", controllers.UpdateEntry)
+	protectedRoutes.DELETE("/entry/:id", controllers.DeleteEntry)
 
 	router.Run(":8000")
 	fmt.Println("Server running on port 8000")
